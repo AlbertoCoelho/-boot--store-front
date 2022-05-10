@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate  } from "react-router-
 import { useContext } from "react";
 
 import Login from "./pages/Login";
-// import SignUp from "./pages/SignUp";
-// import MainPage from "./pages/MainPage";
+import SignUp from "./pages/SignUp";
+// import MainPage from "./pages/HomePage";
 
 import GlobalStyle from "./styles/GlobalStyle";
 
@@ -26,8 +26,8 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route exact path="/" element={<Login />} />
-          {/* <Route path="/sign-up" element={<SignUp />} />
-          <Route path="cash-income" element={<Private> <MainPage /> </Private>} /> */}
+          <Route path="/sign-up" element={<SignUp />} />
+          {/* <Route path="cash-income" element={<Private> <HomePage /> </Private>} /> */}
         </Routes>
         <GlobalStyle />
       </AuthProvider>
