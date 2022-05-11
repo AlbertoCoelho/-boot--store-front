@@ -18,19 +18,24 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
-  width: 165px;
-  height: 50px;
+  width: 100vw;
+  height: 150px;
 
-  margin-top: 8%;
-  margin-bottom: 70px;
+  background-color: #1b5fc5;
 
-  font-family: "Righteous";
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 50px;
-  text-align: center;
-
-  color: #ffffff;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  p {
+    width: 165px;
+    font-family: "Righteous";
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+  }
 `;
 
 const NavigateBar = styled.div`
@@ -43,10 +48,29 @@ const NavigateBar = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  position: fixed;
+  margin-top: 150px;
+
   ion-icon {
     font-size: 25px;
     color: white;
   }
 `;
 
-export { Wrapper, Container, Logo, NavigateBar };
+const ProductsContainer = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  width: 90vw;
+  height: 900px;
+  margin-top: 210px;
+  background-color: blue;
+`;
+
+const Product = styled.div`
+  p {
+    font-family: "Roboto";
+    font-size: 12px;
+  }
+`;
+
+export { Wrapper, Container, Logo, NavigateBar, ProductsContainer, Product };
