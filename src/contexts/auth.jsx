@@ -42,7 +42,7 @@ export const AuthProvider = ( {children} ) => {
       api.defaults.headers.Authorization = `Bearer ${token}`;
 
       setUser(loggedUser);
-      navigate("/cash-income");
+      navigate("/MainPage");
     } catch{
       alert("User not registered, make your registration!");
       isLoading.placeholder = "Entrar";
