@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-// import MainPage from "./pages/HomePage";
+// import HomePage from "./pages/HomePage";
 
 import GlobalStyle from "./styles/GlobalStyle";
 
@@ -14,7 +14,8 @@ const App = () => {
   const { authenticated } = useContext(AuthContext);
 
   if(!authenticated){
-    return <Navigate to="/" />
+    //Por enquanto navega para /login mas depois navegaria para HomePage
+    return <Navigate to="/login" />
   }
 
   return children;
@@ -25,9 +26,9 @@ const App = () => {
     <Router>
       <AuthProvider>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          {/* <Route path="cash-income" element={<Private> <HomePage /> </Private>} /> */}
         </Routes>
         <GlobalStyle />
       </AuthProvider>

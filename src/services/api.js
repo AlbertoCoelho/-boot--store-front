@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: `${process.env.REACT_APP_API_BASE_URL}`
+  baseURL: `http://localhost:5000`
 });
 
 export const makeSignUp = async (formData) => {
@@ -9,6 +9,6 @@ export const makeSignUp = async (formData) => {
 }
 
 export const makeLogin = async (formData) => {
-  const token = await api.post("/",formData);
+  const token = await api.post("/login",formData);
   return token;
 }
