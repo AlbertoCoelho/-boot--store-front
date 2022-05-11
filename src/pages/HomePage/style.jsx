@@ -59,17 +59,31 @@ const NavigateBar = styled.div`
 
 const ProductsContainer = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: space-around;
   width: 90vw;
-  height: 900px;
   margin-top: 210px;
-  background-color: blue;
 `;
 
 const Product = styled.div`
+  background-color: #7f8d57;
+  width: 40%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
   p {
+    width: 90%;
+    margin-top: 5px;
+    color: white;
     font-family: "Roboto";
-    font-size: 12px;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 3px;
+  }
+  img {
+    width: 100%;
   }
 `;
 

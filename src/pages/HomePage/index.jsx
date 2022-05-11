@@ -37,12 +37,12 @@ const RenderProducts = () => {
     })();
   }, []);
 
-  products.map(({ name, price, img, _id }) => {
+  return products.map(({ name, price, img, _id }) => {
     return (
       <Product key={_id}>
         <img src={img} alt={name}></img>
         <p>{name}</p>
-        <p>{price}</p>
+        <p>R${price.toString().replace(".", ",")}</p>
       </Product>
     );
   });
