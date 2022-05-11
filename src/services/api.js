@@ -10,7 +10,7 @@ export const makeSignUp = async (formData) => {
 };
 
 export const makeLogin = async (formData) => {
-  const token = await api.post("/", formData);
+  const token = await api.post("/login",formData);
   return token;
 };
 

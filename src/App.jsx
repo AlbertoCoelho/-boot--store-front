@@ -20,11 +20,12 @@ const App = () => {
   const Private = ({ children }) => {
     const { authenticated } = useContext(AuthContext);
 
-    if (!authenticated) {
-      return <Navigate to="/" />;
-    }
+  if(!authenticated){
+    //Por enquanto navega para /login mas depois navegaria para HomePage
+    return <Navigate to="/login" />
+  }
 
-    return children;
+  return children;
   };
 
   return (

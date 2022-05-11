@@ -44,7 +44,7 @@ const SignUp = () => {
     try {
       await makeSignUp({ ...formData });
       setIsLoading(false);
-      navigate("/");
+      navigate("/login");
     } catch {
       alert("Please fill in the data correctly");
       isLoading.placeholder = "Cadastrar";
@@ -117,9 +117,9 @@ const SignUp = () => {
           />
           <Input
             type="password"
-            value={formData.passwordConfirmation}
+            value={formData.confirmPassword}
             onChange={handleInputChange}
-            name="passwordConfirmation"
+            name="confirmPassword"
             placeholder="Confirme a senha"
             disabled={isLoading.disabled && "disabled"}
             required
