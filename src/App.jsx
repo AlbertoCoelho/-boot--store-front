@@ -20,12 +20,12 @@ const App = () => {
   const Private = ({ children }) => {
     const { authenticated } = useContext(AuthContext);
 
-  if(!authenticated){
-    //Por enquanto navega para /login mas depois navegaria para HomePage
-    return <Navigate to="/login" />
-  }
+    if (!authenticated) {
+      //Por enquanto navega para /login mas depois navegaria para HomePage
+      return <Navigate to="/login" />;
+    }
 
-  return children;
+    return children;
   };
 
   return (
@@ -33,7 +33,7 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/:id" element={<ProductPage />} />
+          <Route path="/produtos/:id" element={<ProductPage />} />
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/carrinho" element={<Cart />} />

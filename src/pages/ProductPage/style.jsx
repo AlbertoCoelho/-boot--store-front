@@ -57,12 +57,33 @@ const NavigateBar = styled.div`
   }
 `;
 
-const CartContainer = styled.div`
+const ProductContainer = styled.div`
+  margin-top: 230px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 90vw;
-  margin-top: 210px;
+  flex-direction: row;
+  align-items: flex-end;
+  img {
+    height: 50vh;
+  }
 `;
 
-export { Wrapper, Container, Logo, NavigateBar, CartContainer };
+const ProductInfo = styled.div`
+  color: white;
+  margin-left: 10px;
+  p {
+    font-size: 20px;
+  }
+  .price {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+
+  button {
+    height: 45px;
+    width: 100%;
+    background-color: #7f8d57;
+    color: #ffffff;
+  }
+`;
+
+export { Wrapper, Container, Logo, NavigateBar, ProductContainer, ProductInfo };
