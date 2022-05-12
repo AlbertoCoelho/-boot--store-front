@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link, useParams } from "react-router-dom";
 
-import { getProducts } from "../../services/api";
+import { getProducts, addProductToCart } from "../../services/api";
 import {
   Container,
   Wrapper,
@@ -50,7 +50,9 @@ const ProductPage = () => {
               <p className="price">
                 R${product[0].price.toString().replace(".", ",")}
               </p>
-              <button>Adicionar ao carrinho</button>
+              <button onClick={() => addProductToCart(product[0]._id)}>
+                Adicionar ao carrinho
+              </button>
             </ProductInfo>
           </ProductContainer>
         ) : (

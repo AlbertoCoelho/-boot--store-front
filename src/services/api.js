@@ -10,10 +10,20 @@ export const makeSignUp = async (formData) => {
 };
 
 export const makeLogin = async (formData) => {
-  const token = await api.post("/login",formData);
+  const token = await api.post("/login", formData);
   return token;
 };
 
 export const getProducts = async () => {
   return await api.get("/products");
+};
+
+export const addProductToCart = async (product) => {
+  // const token = localStorage.getItem("token");
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // };
+  return await api.post("/cart", product);
 };

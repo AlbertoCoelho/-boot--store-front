@@ -79,7 +79,7 @@ const ProductInfo = styled.div`
   }
 
   button {
-    height: 45px;
+    min-height: 45px;
     width: 100%;
     background-color: #7f8d57;
     color: #ffffff;
