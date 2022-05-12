@@ -8,9 +8,9 @@ import Loading from "../../components/Loading";
 
 import { makeSignUp } from "../../services/api";
 
-import { Wrapper, Container,Logo, Title, StyledLink } from "./style";
+import { Wrapper, Container, Logo, Title, StyledLink } from "./style";
 
-import { IconContext } from 'react-icons';
+import { IconContext } from "react-icons";
 import { GoHome } from "react-icons/go";
 
 const SignUp = () => {
@@ -90,8 +90,14 @@ const SignUp = () => {
     <Wrapper>
       <Container>
         <Logo>
-          <IconContext.Provider value={{ color: "#FFFFFF", className: "global-class-name", size: "3em" }}>
-              <GoHome onClick={() => navigate("/")}/>
+          <IconContext.Provider
+            value={{
+              color: "#FFFFFF",
+              className: "global-class-name",
+              size: "3em",
+            }}
+          >
+            <GoHome onClick={() => navigate("/")} />
           </IconContext.Provider>
         </Logo>
         <Title>Card Game Store</Title>
