@@ -18,7 +18,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    passwordConfirmation: "",
+    confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState({
     placeholder: "Cadastrar",
