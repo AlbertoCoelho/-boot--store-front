@@ -1,30 +1,33 @@
 // import * as yup from 'yup';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Loading from '../../components/Loading';
+import Loading from "../../components/Loading";
 
-import { makeSignUp } from '../../services/api';
+import { makeSignUp } from "../../services/api";
 
-import { Wrapper,Container,Logo,StyledLink } from "./style";
+import { Wrapper, Container, Logo, StyledLink } from "./style";
 
 const SignUp = () => {
-  const [ formData, setFormData ] = useState({
-    name:"",
-    email:"",
-    password:"",
-    confirmPassword:""
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
   });
-  const [isLoading, setIsLoading] = useState( {placeholder: "Cadastrar", disabled: false} );
+  const [isLoading, setIsLoading] = useState({
+    placeholder: "Cadastrar",
+    disabled: false,
+  });
   // const [status,setStatus] = useState( {message: ''} );
 
   const navigate = useNavigate();
 
-  //Vai colocar tudo que já tem de formData, atualizar uma propriedade que tiver o nome de e.target.name que terá o valor e.target.value 
-  const handleInputChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  //Vai colocar tudo que já tem de formData, atualizar uma propriedade que tiver o nome de e.target.name que terá o valor e.target.value
+  const handleInputChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   //Enviar os dados para o back-end
   const handleSignUp = async (e) => {
@@ -34,23 +37,21 @@ const SignUp = () => {
 
     // if(!(await validate())) return;
 
-    isLoading.placeholder = <Loading height={100} width={100}/>
+    isLoading.placeholder = <Loading height={100} width={100} />;
     isLoading.disabled = true;
-    setIsLoading({...isLoading});
+    setIsLoading({ ...isLoading });
 
     try {
-      await makeSignUp({...formData});
+      await makeSignUp({ ...formData });
       setIsLoading(false);
       navigate("/login");
     } catch {
-        alert("Please fill in the data correctly");
-        isLoading.placeholder = "Cadastrar";
-        isLoading.disabled = false;
-        setIsLoading({...isLoading});
+      alert("Please fill in the data correctly");
+      isLoading.placeholder = "Cadastrar";
+      isLoading.disabled = false;
+      setIsLoading({ ...isLoading });
     }
-  }
-
-
+  };
 
   //fix me: not working
   // async function validate(){
@@ -87,7 +88,7 @@ const SignUp = () => {
       <Container>
         <Logo>Card Game Store</Logo>
         <form onSubmit={handleSignUp}>
-          <Input 
+          <Input
             type="text"
             value={formData.name}
             onChange={handleInputChange}
@@ -96,7 +97,7 @@ const SignUp = () => {
             disabled={isLoading.disabled && "disabled"}
             required
           />
-          <Input 
+          <Input
             type="email"
             value={formData.email}
             onChange={handleInputChange}
@@ -105,7 +106,7 @@ const SignUp = () => {
             disabled={isLoading.disabled && "disabled"}
             required
           />
-          <Input 
+          <Input
             type="password"
             value={formData.password}
             onChange={handleInputChange}
@@ -114,7 +115,7 @@ const SignUp = () => {
             disabled={isLoading.disabled && "disabled"}
             required
           />
-          <Input 
+          <Input
             type="password"
             value={formData.confirmPassword}
             onChange={handleInputChange}
@@ -127,10 +128,10 @@ const SignUp = () => {
             {isLoading.placeholder}
           </Button>
         </form>
-        <StyledLink to="/">Já tem uma conta? Entre agora!</StyledLink>
+        <StyledLink to="/sign-in">Já tem uma conta? Entre agora!</StyledLink>
       </Container>
     </Wrapper>
   );
-}
+};
 
 export default SignUp;
