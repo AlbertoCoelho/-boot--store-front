@@ -18,6 +18,13 @@ const Container = styled.div`
 `
 
 const Logo = styled.div`
+  position: absolute;
+  top: 15px;
+
+  cursor: pointer;
+`
+
+const Title = styled.div`
   width: 165px;
   height: 50px;
 
@@ -51,5 +58,6 @@ export {
   Wrapper,
   Container,
   Logo,
+  Title,
   StyledLink
 }
