@@ -1,12 +1,16 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Loading from "../../components/Loading";
 
-import { Wrapper,Container,Logo,StyledLink } from "./style";
+import { Wrapper,Container,Logo,Title,StyledLink } from "./style";
 
 import { AuthContext } from '../../contexts/auth';
+
+import { IconContext } from 'react-icons';
+import { GoHome } from "react-icons/go";
 
 const Login = () => {
 
@@ -15,6 +19,7 @@ const Login = () => {
     password:""
   });
   const [isLoading, setIsLoading] = useState( {placeholder: "Entrar", disabled: false} );
+  const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
   const handleLogin = async (e) => {
@@ -33,7 +38,12 @@ const Login = () => {
   return (
     <Wrapper>
       <Container>
-        <Logo>Card Game Store</Logo>
+        <Logo>
+          <IconContext.Provider value={{ color: "#FFFFFF", className: "global-class-name", size: "3em" }}>
+            <GoHome onClick={() => navigate("/")}/>
+          </IconContext.Provider>
+        </Logo>
+        <Title>Card Game Store</Title>
         <form onSubmit={handleLogin}>
           <Input
             type="email"
