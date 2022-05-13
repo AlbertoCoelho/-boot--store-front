@@ -1,8 +1,30 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import { Link, useParams } from "react-router-dom";
 
-import { Container, Wrapper, Logo, NavigateBar, CartContainer } from "./style";
+import { getProducts, addProductToCart } from "../../services/api";
+import {
+  Container,
+  Wrapper,
+  Logo,
+  NavigateBar,
+  ProductContainer,
+  ProductInfo,
+} from "./style";
 
 const ProductPage = () => {
+  const { id } = useParams();
+
+  const [product, setProduct] = useState({});
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      const response = await getProducts();
+      setProduct(response.data.filter((item) => item._id === id));
+    })();
+  }, []);
+
   return (
     <Wrapper>
       <Container>
@@ -20,9 +42,22 @@ const ProductPage = () => {
             <ion-icon name="cart"></ion-icon>
           </Link>
         </NavigateBar>
-        <CartContainer>
-          Página que vai mostrar o produto referente ao id
-        </CartContainer>
+        {product.length ? (
+          <ProductContainer>
+            <img src={product[0].img} alt={product[0].name} />
+            <ProductInfo>
+              <p>{product[0].name}</p>
+              <p className="price">
+                R${product[0].price.toString().replace(".", ",")}
+              </p>
+              <button onClick={() => addProductToCart(product[0]._id)}>
+                Adicionar ao carrinho
+              </button>
+            </ProductInfo>
+          </ProductContainer>
+        ) : (
+          <></>
+        )}
       </Container>
     </Wrapper>
   );

@@ -24,7 +24,7 @@ const App = () => {
     return <Navigate to="/sign-up" />
   }
 
-  return children;
+    return children;
   };
 
   return (
@@ -32,7 +32,7 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/:id" element={<ProductPage />} />
+          <Route path="/produtos/:id" element={<ProductPage />} />
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/carrinho" element={<Cart />} />
