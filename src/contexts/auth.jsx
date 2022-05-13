@@ -17,7 +17,7 @@ export const AuthProvider = ( {children} ) => {
 
     if(recoveredUser){
       setUser(JSON.parse(recoveredUser));
-      api.defaults.headers.Authorization = `Bearer ${recoveredUser}`;
+      api.defaults.headers.Authorization = recoveredUser;
     }
 
     setLoading(false);
