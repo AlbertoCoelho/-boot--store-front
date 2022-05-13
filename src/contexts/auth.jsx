@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
     if (recoveredUser) {
       setUser(recoveredUser);
-      api.defaults.headers.Authorization = recoveredUser;
+      api.defaults.headers.Authorization = `Bearer ${recoveredUser}`;
     }
 
     setLoading(false);
@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
       console.log(response);
 
       const loggedUser = response.data;
+      localStorage.setItem("user", loggedUser);
 
       localStorage.setItem("user", loggedUser);
       api.defaults.headers.Authorization = `Bearer ${loggedUser}`;
@@ -47,6 +48,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("user");
+
     api.defaults.headers.Authorization = null;
 
     setUser(null);

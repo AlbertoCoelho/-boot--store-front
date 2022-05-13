@@ -48,7 +48,7 @@ const RenderProducts = () => {
 
   return products.map(({ name, price, img, _id }) => {
     return (
-      <Product onClick={() => navigate(`/${_id}`)} key={_id}>
+      <Product onClick={() => navigate(`/produtos/${_id}`)} key={_id}>
         <img src={img} alt={name}></img>
         <p>{name}</p>
         <p>R${price.toString().replace(".", ",")}</p>
