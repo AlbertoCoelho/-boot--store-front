@@ -19,11 +19,5 @@ export const getProducts = async () => {
 };
 
 export const addProductToCart = async (product) => {
-  // const token = localStorage.getItem("token");
-  // const config = {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // };
   return await api.post("/cart", product);
 };
