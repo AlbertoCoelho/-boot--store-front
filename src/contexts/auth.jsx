@@ -13,11 +13,11 @@ export const AuthProvider = ( {children} ) => {
 
   useEffect( () => {
     const recoveredUser = localStorage.getItem('user');
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
 
-    if(recoveredUser && token){
+    if(recoveredUser){
       setUser(JSON.parse(recoveredUser));
-      api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.Authorization = `Bearer ${recoveredUser}`;
     }
 
     setLoading(false);
@@ -34,12 +34,12 @@ export const AuthProvider = ( {children} ) => {
       console.log(response);
 
       const loggedUser = response.data;
-      const token = response.data.token;
+      // const token = response.data.token;
 
       localStorage.setItem("user", JSON.stringify(loggedUser));
-      localStorage.setItem("token", token);
+      // localStorage.setItem("token", token);
 
-      api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.Authorization = `Bearer ${loggedUser}`;
 
       setUser(loggedUser);
       navigate("/MainPage");
@@ -53,7 +53,7 @@ export const AuthProvider = ( {children} ) => {
 
   const logout = () => {
     localStorage.removeItem("user");
-    localStorage.removeItem("token");      
+    // localStorage.removeItem("token");      
     api.defaults.headers.Authorization = null;
 
     setUser(null);
