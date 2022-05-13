@@ -18,7 +18,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    passwordConfirmation: "",
+    confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState({
     placeholder: "Cadastrar",
@@ -47,7 +47,7 @@ const SignUp = () => {
     try {
       await makeSignUp({ ...formData });
       setIsLoading(false);
-      navigate("/login");
+      navigate("/sign-in");
     } catch {
       alert("Please fill in the data correctly");
       isLoading.placeholder = "Cadastrar";
