@@ -9,12 +9,12 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
 
     if (recoveredUser) {
-      setUser(JSON.parse(recoveredUser));
+      setUser(recoveredUser);
       api.defaults.headers.Authorization = `Bearer ${recoveredUser}`;
     }
 
@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }) => {
       console.log(response);
 
       const loggedUser = response.data;
-
       localStorage.setItem("user", loggedUser);
 
+      localStorage.setItem("user", loggedUser);
       api.defaults.headers.Authorization = `Bearer ${loggedUser}`;
 
       setUser(loggedUser);
