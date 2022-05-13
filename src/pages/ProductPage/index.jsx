@@ -50,7 +50,9 @@ const ProductPage = () => {
               <p className="price">
                 R${product[0].price.toString().replace(".", ",")}
               </p>
-              <button onClick={() => addProductToCart(product[0]._id)}>
+              <button
+                onClick={() => addProductToCart({ productId: product[0]._id })}
+              >
                 Adicionar ao carrinho
               </button>
             </ProductInfo>
