@@ -59,10 +59,30 @@ const NavigateBar = styled.div`
 
 const CartContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
   width: 90vw;
   margin-top: 210px;
+
+  header {
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+  }
 `;
 
-export { Wrapper, Container, Logo, NavigateBar, CartContainer };
+const ProductsContainer = styled.div``;
+const Product = styled.div``;
+const ProductInfo = styled.div``;
+
+export {
+  Wrapper,
+  Container,
+  Logo,
+  NavigateBar,
+  CartContainer,
+  ProductsContainer,
+  Product,
+  ProductInfo,
+};

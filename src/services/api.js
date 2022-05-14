@@ -19,5 +19,11 @@ export const getProducts = async () => {
 };
 
 export const addProductToCart = async (product) => {
-  return await api.post("/cart", product);
+  await api.post("/cart", product);
+  alert("Produto adicionado ao carrinho.");
+};
+
+export const getCartProducts = async () => {
+  const cartProducts = await api.get("/cart");
+  return cartProducts;
 };
