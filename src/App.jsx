@@ -37,7 +37,7 @@ const App = () => {
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/carrinho" element={<Cart />} />
-          <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/checkout" element={<Private> <CheckOut /> </Private>} />
         </Routes>
         <GlobalStyle />
       </AuthProvider>
