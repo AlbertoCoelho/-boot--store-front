@@ -11,6 +11,7 @@ import {
   ProductsContainer,
   Product,
   ProductInfo,
+  TotalContainer,
 } from "./style";
 
 const Cart = () => {
@@ -34,7 +35,15 @@ const Cart = () => {
         <CartContainer>
           <header>Seu carrinho:</header>
           <main>
-            <ProductsContainer>{RenderProducts()}</ProductsContainer>
+            <ProductsContainer>
+              {RenderProducts()}
+              <TotalContainer>
+                <button>
+                  <p>FECHAR PEDIDO</p>
+                  <span>TOTAL: R$ {RenderTotal()}</span>
+                </button>
+              </TotalContainer>
+            </ProductsContainer>
           </main>
         </CartContainer>
       </Container>
@@ -48,21 +57,37 @@ const RenderProducts = () => {
   useEffect(() => {
     (async () => {
       const response = await getCartProducts();
-      setProducts(response.data);
+      setProducts(response.data.products);
     })();
   }, []);
 
-  return products.map(({ name, price, img, _id }) => {
+  return products.map(({ name, price, img }, index) => {
     return (
-      <Product key={_id}>
+      <Product key={index}>
         <img src={img} alt={name}></img>
         <ProductInfo>
           <p>{name}</p>
-          <p>R${price.toString().replace(".", ",")}</p>
+          <p className="price">R${price.toString().replace(".", ",")}</p>
         </ProductInfo>
       </Product>
     );
   });
+};
+
+const RenderTotal = () => {
+  const [products, setProducts] = useState([]);
+  let total = 0;
+
+  useEffect(() => {
+    (async () => {
+      const response = await getCartProducts();
+      setProducts(response.data.products);
+    })();
+  }, []);
+
+  products.forEach((product) => (total += product.price));
+
+  return total.toString().replace(".", ",");
 };
 
 export default Cart;
