@@ -27,3 +27,7 @@ export const getCartProducts = async () => {
   const cartProducts = await api.get("/cart");
   return cartProducts;
 };
+
+export const makePurchase = async (products) => {
+  await api.post("/purchase", products)
+}
