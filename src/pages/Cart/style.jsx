@@ -18,6 +18,8 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
+  z-index: 10;
+
   width: 100vw;
   height: 150px;
 
@@ -39,6 +41,7 @@ const Logo = styled.div`
 `;
 
 const NavigateBar = styled.div`
+  z-index: 10;
   width: 100vw;
   height: 50px;
   background-color: #7f8d57;
@@ -69,12 +72,59 @@ const CartContainer = styled.div`
     font-size: 18px;
     color: white;
     margin-top: 10px;
+    margin-bottom: 20px;
   }
 `;
 
 const ProductsContainer = styled.div``;
-const Product = styled.div``;
-const ProductInfo = styled.div``;
+const Product = styled.div`
+  margin-bottom: 20px;
+  background-color: rgba(127, 141, 87, 0.78);
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  img {
+    height: 100px;
+  }
+`;
+const ProductInfo = styled.div`
+  margin: 10px;
+  font-family: "Roboto";
+  font-weight: 700;
+  color: white;
+  .price {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+`;
+
+const TotalContainer = styled.div`
+  button {
+    width: 100%;
+    height: 55px;
+    border-radius: 10px;
+    background-color: #7f8d57;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    p {
+      font-family: "Roboto";
+      font-weight: 700;
+      color: white;
+      font-size: 16px;
+      letter-spacing: 3px;
+      margin-bottom: 3px;
+    }
+    span {
+      font-family: "Roboto";
+      font-weight: 700;
+      color: white;
+    }
+  }
+`;
 
 export {
   Wrapper,
@@ -85,4 +135,5 @@ export {
   ProductsContainer,
   Product,
   ProductInfo,
+  TotalContainer,
 };
