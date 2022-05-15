@@ -83,18 +83,25 @@ const Product = styled.div`
   border-radius: 10px;
   display: flex;
   position: relative;
+  ion-icon {
+    color: #8a0000;
+    font-size: 22px;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+  }
   img {
     height: 100px;
   }
 `;
 const ProductInfo = styled.div`
-  margin: 10px;
+  margin: 15px 40px 10px 10px;
   font-family: "Roboto";
   font-weight: 700;
   color: white;
   .price {
     position: absolute;
-    bottom: 10px;
+    bottom: 8px;
     right: 10px;
   }
 `;

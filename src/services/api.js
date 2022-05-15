@@ -28,6 +28,11 @@ export const getCartProducts = async () => {
   return cartProducts;
 };
 
+export const deleteCartProduct = async () => {
+  const updateCart = await api.delete("/cart");
+  return updateCart;
+};
+
 export const makePurchase = async (products) => {
-  await api.post("/purchase", products)
-}
+  await api.post("/purchase", products);
+};

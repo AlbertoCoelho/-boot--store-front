@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getCartProducts, makePurchase } from "../../services/api";
+import {
+  getCartProducts,
+  makePurchase,
+  deleteCartProduct,
+} from "../../services/api";
 
 import {
   Container,
@@ -16,7 +20,6 @@ import {
 } from "./style";
 
 const Cart = () => {
-
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -27,35 +30,39 @@ const Cart = () => {
     })();
   }, []);
 
-const renderProducts = () => {
-  return products.map(({ name, price, img }, index) => {
-    return (
-      <Product key={index}>
-        <img src={img} alt={name}></img>
-        <ProductInfo>
-          <p>{name}</p>
-          <p className="price">R${price.toString().replace(".", ",")}</p>
-        </ProductInfo>
-      </Product>
-    );
-  });
-};
+  const renderProducts = () => {
+    return products.map(({ name, price, img }, index) => {
+      return (
+        <Product key={index}>
+          <ion-icon
+            onClick={() => setProducts(deleteCartProduct(index))}
+            name="close-circle"
+          ></ion-icon>
+          <img src={img} alt={name}></img>
+          <ProductInfo>
+            <p>{name}</p>
+            <p className="price">R${price.toString().replace(".", ",")}</p>
+          </ProductInfo>
+        </Product>
+      );
+    });
+  };
 
-const renderTotal = () => {
-  let total = 0;
-  products.forEach((product) => (total += product.price));
-  return total.toString().replace(".", ",");
-};
+  const renderTotal = () => {
+    let total = 0;
+    products.forEach((product) => (total += product.price));
+    return total.toString().replace(".", ",");
+  };
 
-const purchase = async () => {
-  try {
-    await makePurchase(products);
-    setProducts([]);
-    navigate("/checkout");
-  } catch (err){
-    console.log(err);
-  }
-}
+  const purchase = async () => {
+    try {
+      await makePurchase(products);
+      setProducts([]);
+      navigate("/checkout");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Wrapper>
