@@ -21,11 +21,11 @@ const App = () => {
   const Private = ({ children }) => {
     const { authenticated } = useContext(AuthContext);
 
-    if(!authenticated){
-      return <Navigate to="/sign-up" />
+    if (!authenticated) {
+      return <Navigate to="/sign-up" />;
     }
 
-      return children;
+    return children;
   };
 
   return (
@@ -36,8 +36,22 @@ const App = () => {
           <Route path="/produtos/:id" element={<ProductPage />} />
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/carrinho" element={<Cart />} />
-          <Route path="/checkout" element={<Private> <CheckOut /> </Private>} />
+          <Route
+            path="/carrinho"
+            element={
+              <Private>
+                <Cart />
+              </Private>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <Private>
+                <CheckOut />
+              </Private>
+            }
+          />
         </Routes>
         <GlobalStyle />
       </AuthProvider>
