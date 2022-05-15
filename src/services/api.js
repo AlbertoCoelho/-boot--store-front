@@ -28,8 +28,8 @@ export const getCartProducts = async () => {
   return cartProducts;
 };
 
-export const deleteCartProduct = async () => {
-  const updateCart = await api.delete("/cart");
+export const deleteCartProduct = async (productIndex) => {
+  const updateCart = await api.delete("/cart", productIndex);
   return updateCart;
 };
 

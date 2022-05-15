@@ -35,7 +35,7 @@ const Cart = () => {
       return (
         <Product key={index}>
           <ion-icon
-            onClick={() => setProducts(deleteCartProduct(index))}
+            onClick={() => deleteCartProduct(index)}
             name="close-circle"
           ></ion-icon>
           <img src={img} alt={name}></img>
