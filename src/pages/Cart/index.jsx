@@ -49,8 +49,8 @@ const renderTotal = () => {
 
 const purchase = async () => {
   try {
-    // await makePurchase(products);
-    // setProducts([]);
+    await makePurchase(products);
+    setProducts([]);
     navigate("/checkout");
   } catch (err){
     console.log(err);
