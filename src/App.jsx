@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
 import ProductPage from "./pages/ProductPage";
+import CheckOut from "./pages/CheckOut";
 
 import GlobalStyle from "./styles/GlobalStyle";
 
@@ -20,11 +21,11 @@ const App = () => {
   const Private = ({ children }) => {
     const { authenticated } = useContext(AuthContext);
 
-  if(!authenticated){
-    return <Navigate to="/sign-up" />
-  }
+    if(!authenticated){
+      return <Navigate to="/sign-up" />
+    }
 
-    return children;
+      return children;
   };
 
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/carrinho" element={<Cart />} />
+          <Route path="/checkout" element={<Private> <CheckOut /> </Private>} />
         </Routes>
         <GlobalStyle />
       </AuthProvider>
