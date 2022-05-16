@@ -31,13 +31,16 @@ const Cart = () => {
   }, []);
 
   const renderProducts = () => {
-    return products.map(({ name, price, img }, index) => {
+    return products.map(({ name, price, img, _id }, productIndex) => {
       return (
-        <Product key={index}>
-          <ion-icon
-            onClick={() => deleteCartProduct(index)}
+        <Product key={productIndex}>
+          {/* FIX ME: ERRO AO DELETAR O PRODUTO */}
+          {/* <ion-icon
+            onClick={() => {
+              deleteCartProduct({ productIndex: productIndex });
+            }}
             name="close-circle"
-          ></ion-icon>
+          ></ion-icon> */}
           <img src={img} alt={name}></img>
           <ProductInfo>
             <p>{name}</p>

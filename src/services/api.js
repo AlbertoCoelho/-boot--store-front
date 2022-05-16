@@ -28,10 +28,11 @@ export const getCartProducts = async () => {
   return cartProducts;
 };
 
-export const deleteCartProduct = async (productIndex) => {
-  const updateCart = await api.delete("/cart", productIndex);
-  return updateCart;
-};
+// FIX ME: ERRO AO DELETAR O PRODUTO
+// export const deleteCartProduct = async (productIndex) => {
+//   const updateCart = await api.delete("/cart", productIndex);
+//   return updateCart.data;
+// };
 
 export const makePurchase = async (products) => {
   await api.post("/purchase", products);
