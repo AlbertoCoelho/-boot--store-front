@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import { Link, useParams } from "react-router-dom";
 
 import { getProducts, addProductToCart } from "../../services/api";
@@ -16,7 +15,6 @@ const ProductPage = () => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
-  let navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
